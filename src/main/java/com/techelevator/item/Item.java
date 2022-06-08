@@ -10,11 +10,14 @@ public abstract class Item {
     private BigDecimal price;
     private String slotLocation;
     private String soundMessage;
+    private int itemsLeft;
+
 
     public Item(String name, BigDecimal price, String slotLocation) {
         this.name = name;
         this.price = price;
         this.slotLocation = slotLocation;
+        itemsLeft = TOTAL_ITEMS;
     }
 
     public String getName() {
@@ -41,15 +44,25 @@ public abstract class Item {
         this.slotLocation = slotLocation;
     }
 
-    public String getSoundMessage(){
+    public String getSoundMessage() {
         return soundMessage;
     }
 
-    public void setSoundMessage(String soundMessage){
+    public void setSoundMessage(String soundMessage) {
         this.soundMessage = soundMessage;
     }
 
-    public int getTotalItems(){
+    public int getTotalItems() {
         return TOTAL_ITEMS;
     }
+
+    public int getItemsLeft() {
+        return itemsLeft;
+    }
+
+    public void setItemsLeft(int itemsLeft) {
+        this.itemsLeft = itemsLeft;
+    }
+
+
 }
