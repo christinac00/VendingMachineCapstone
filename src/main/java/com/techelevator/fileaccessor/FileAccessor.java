@@ -44,7 +44,7 @@ public class FileAccessor {
 
     public static void appendLog(File file, String message){
         LocalDateTime currentDateTime = LocalDateTime.now();
-        String formattedDate = currentDateTime.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
+        String formattedDate = currentDateTime.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm"));
 
         if(!file.exists()) {
             try {

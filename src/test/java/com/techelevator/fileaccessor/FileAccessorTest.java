@@ -2,14 +2,15 @@ package com.techelevator.fileaccessor;
 
 import com.techelevator.item.*;
 import junit.framework.TestCase;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 public class FileAccessorTest extends TestCase {
 
@@ -47,5 +48,21 @@ public class FileAccessorTest extends TestCase {
         }
 
         assertTrue(allEqual);
+    }
+
+    @Test
+    public void testAppendLog() {
+        File file = new File("LogTest.txt");
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        String formattedDate = currentDateTime.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm"));
+
+        FileAccessor.appendLog(file, "This is a test");
+
+        try(Scanner input = new Scanner(file)){
+            String line =  input.nextLine();
+            assertEquals(line, formattedDate + "This is a test");
+        } catch (FileNotFoundException e){
+            Assert.fail();
+        }
     }
 }
