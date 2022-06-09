@@ -65,6 +65,7 @@ public class VendimgMachinePuchasing {
                 FileAccessor.appendLog(logFile, message);
                 String[] change = returnChange(vendingMachine.getCurrentMoney());
                 System.out.println("Quarters returned: " + change[0] + "\nDimes returned: " + change[1] + "\nNickels returned: " + change[2]);
+                vendingMachine.setCurrentMoney(BigDecimal.valueOf(0.0));
                 userInput.close();
                 break;
             }

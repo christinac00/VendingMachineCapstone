@@ -64,5 +64,9 @@ public class VendingMachine {
         return inventory;
     }
 
+    public void setCurrentMoney(BigDecimal currentMoney){
+        this.currentMoney = currentMoney;
+    }
+
 
 }
