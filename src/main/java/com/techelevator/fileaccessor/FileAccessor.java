@@ -2,8 +2,7 @@ package com.techelevator.fileaccessor;
 
 import com.techelevator.item.*;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.math.BigDecimal;
 import java.util.*;
 
@@ -36,7 +35,23 @@ public class FileAccessor {
     }
 
 
-    public static boolean appendLog(){
+    public static boolean appendLog(File file){
+
+        if(!file.exists()) {
+            try {
+                file.createNewFile();
+            }
+            catch(IOException e){
+                System.out.println("ERROR, invalid!");
+            }
+        }
+
+        try(PrintWriter output = new PrintWriter(new FileOutputStream(file, true))){
+            output.println();
+        }catch(FileNotFoundException e){
+
+        }
+
         return false;
     }
 

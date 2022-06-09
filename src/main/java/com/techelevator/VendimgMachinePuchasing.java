@@ -66,4 +66,8 @@ public class VendimgMachinePuchasing {
 
         return output;
     }
+
+
+
+
 }
