@@ -6,7 +6,6 @@ import com.techelevator.view.Menu;
 import org.w3c.dom.ls.LSOutput;
 
 import java.io.File;
-import java.util.Scanner;
 
 public class VendingMachineCLI {
 
@@ -18,14 +17,15 @@ public class VendingMachineCLI {
 	private Menu menu;
 	private VendingMachine vendingMachine;
 
+	private VendimgMachinePuchasing vendimgMachinePuchasing;
+
 	public VendingMachineCLI(Menu menu) {
 		this.menu = menu;
 		vendingMachine = new VendingMachine(FileAccessor.getInventory(new File("vendingmachine.csv")));
+		vendimgMachinePuchasing = new VendimgMachinePuchasing(menu, vendingMachine);
 	}
 
 	public void run() {
-
-		//Scanner userInput = new Scanner(System.in);
 
 		while (true) {
 			String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
@@ -38,18 +38,11 @@ public class VendingMachineCLI {
 
 				}
 			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
-				// do purchase
+				vendimgMachinePuchasing.run();
 			} else if (choice.equals(EXIT_PROGRAM)){
 				System.exit(1);
 			}
 		}
-
-
-
-
-
-
-
 	}
 
 
