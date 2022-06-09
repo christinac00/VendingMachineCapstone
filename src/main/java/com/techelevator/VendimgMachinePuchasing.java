@@ -7,12 +7,19 @@ import com.techelevator.view.Menu;
 
 import java.io.File;
 import java.math.BigDecimal;
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class VendimgMachinePuchasing {
+
+    private static final double QUARTER_VALUE = 0.25;
+    private static final double DIME_VALUE = 0.10;
+    private static final double NICKLE_VALUE = 0.05;
+
+    private static final int QUARTER_LOCATION = 0;
+    private static final int DIME_LOCATION = 1;
+    private static final int NICKLE_LOCATION = 2;
 
     private static final String SUB_MENU_FEED_MONEY = "Feed Money";
     private static final String SUB_MENU_SELECT_PRODUCT = "Select Product";
@@ -64,9 +71,8 @@ public class VendimgMachinePuchasing {
                 String message = " GIVE CHANGE: $" + vendingMachine.getCurrentMoney() + " $0.00";
                 FileAccessor.appendLog(logFile, message);
                 String[] change = returnChange(vendingMachine.getCurrentMoney());
-                System.out.println("Quarters returned: " + change[0] + "\nDimes returned: " + change[1] + "\nNickels returned: " + change[2]);
+                System.out.println("Quarters returned: " + change[QUARTER_LOCATION] + "\nDimes returned: " + change[DIME_LOCATION] + "\nNickels returned: " + change[NICKLE_LOCATION]);
                 vendingMachine.setCurrentMoney(BigDecimal.valueOf(0.0));
-                userInput.close();
                 break;
             }
         }
@@ -74,13 +80,13 @@ public class VendimgMachinePuchasing {
 
     private String[] returnChange(BigDecimal change){
         String[] output = new String[3];
-        output[0] = change.divideAndRemainder(BigDecimal.valueOf(0.25))[0].toString();
-        change = change.divideAndRemainder(BigDecimal.valueOf(0.25))[1];
+        output[QUARTER_LOCATION] = change.divideAndRemainder(BigDecimal.valueOf(QUARTER_VALUE))[0].toBigInteger().toString();
+        change = change.divideAndRemainder(BigDecimal.valueOf(QUARTER_VALUE))[1];
 
-        output[1] = change.divideAndRemainder(BigDecimal.valueOf(0.1))[0].toString();
-        change = change.divideAndRemainder(BigDecimal.valueOf(0.1))[1];
+        output[DIME_LOCATION] = change.divideAndRemainder(BigDecimal.valueOf(DIME_VALUE))[0].toBigInteger().toString();
+        change = change.divideAndRemainder(BigDecimal.valueOf(DIME_VALUE))[1];
 
-        output[2] = change.divideAndRemainder(BigDecimal.valueOf(0.05))[0].toString();
+        output[NICKLE_LOCATION] = change.divideAndRemainder(BigDecimal.valueOf(NICKLE_VALUE))[0].toBigInteger().toString();
 
         return output;
     }

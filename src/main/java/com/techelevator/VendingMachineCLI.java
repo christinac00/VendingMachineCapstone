@@ -3,7 +3,6 @@ package com.techelevator;
 import com.techelevator.fileaccessor.FileAccessor;
 import com.techelevator.vendingmachine.VendingMachine;
 import com.techelevator.view.Menu;
-import org.w3c.dom.ls.LSOutput;
 
 import java.io.File;
 import java.util.Scanner;
