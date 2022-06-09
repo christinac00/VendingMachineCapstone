@@ -1,6 +1,9 @@
 package com.techelevator;
 
 import com.techelevator.view.Menu;
+import org.w3c.dom.ls.LSOutput;
+
+import java.util.Scanner;
 
 public class VendingMachineCLI {
 
@@ -15,6 +18,9 @@ public class VendingMachineCLI {
 	}
 
 	public void run() {
+
+		Scanner userInput = new Scanner(System.in);
+
 		while (true) {
 			String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
 
@@ -24,7 +30,18 @@ public class VendingMachineCLI {
 				// do purchase
 			}
 		}
+
+
+
+
+
+
+
 	}
+
+
+
+
 
 	public static void main(String[] args) {
 		Menu menu = new Menu(System.in, System.out);
@@ -32,3 +49,7 @@ public class VendingMachineCLI {
 		cli.run();
 	}
 }
+
+
+
+

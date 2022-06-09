@@ -5,14 +5,12 @@ import com.techelevator.item.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class FileAccessor {
 
-    public static List<Item> getInventory(File file){
-        List<Item> output = new ArrayList<>();
+    public static Map<String, Item> getInventory(File file){
+        Map<String, Item> output = new TreeMap<>();
         try(
                 Scanner input = new Scanner(file)
                 ) {
@@ -22,13 +20,13 @@ public class FileAccessor {
                 String[] itemInfo = inputItem.split("//|");
 
                 if(itemInfo[3].equals("Chip")){
-                    output.add(new Chips(itemInfo[1], BigDecimal.valueOf(Double.parseDouble(itemInfo[2])), itemInfo[0]));
+                    output.put( itemInfo[0] ,new Chips(itemInfo[1], BigDecimal.valueOf(Double.parseDouble(itemInfo[2])), itemInfo[0]));
                 } else if(itemInfo[3].equals("Candy")){
-                    output.add(new Candy(itemInfo[1], BigDecimal.valueOf(Double.parseDouble(itemInfo[2])), itemInfo[0]));
+                    output.put(itemInfo[0], new Candy(itemInfo[1], BigDecimal.valueOf(Double.parseDouble(itemInfo[2])), itemInfo[0]));
                 } else if(itemInfo[3].equals("Drink")){
-                    output.add(new Beverage(itemInfo[1], BigDecimal.valueOf(Double.parseDouble(itemInfo[2])), itemInfo[0]));
+                    output.put(itemInfo[0], new Beverage(itemInfo[1], BigDecimal.valueOf(Double.parseDouble(itemInfo[2])), itemInfo[0]));
                 } else if(itemInfo[3].equals("Gum")){
-                    output.add(new Gum(itemInfo[1], BigDecimal.valueOf(Double.parseDouble(itemInfo[2])), itemInfo[0]));
+                    output.put(itemInfo[0], new Gum(itemInfo[1], BigDecimal.valueOf(Double.parseDouble(itemInfo[2])), itemInfo[0]));
                 }
             }
         } catch (FileNotFoundException e){
