@@ -19,11 +19,11 @@ public class FileAccessorTest extends TestCase {
 
         Map<String, Item> actualInventory = new TreeMap<>();
         actualInventory.put("A1", new Chips("Potato Crisps", BigDecimal.valueOf(3.05), "A1"));
-        actualInventory.put("A2", new Chips("Stacker", BigDecimal.valueOf(1.45), "A2"));
+        actualInventory.put("A2", new Chips("Stackers", BigDecimal.valueOf(1.45), "A2"));
         actualInventory.put("A3", new Chips("Grain Waves", BigDecimal.valueOf(2.75), "A3"));
         actualInventory.put("A4", new Chips("Cloud Popcorn", BigDecimal.valueOf(3.65), "A4"));
 
-        actualInventory.put("B1", new Candy("MoonPie", BigDecimal.valueOf(1.80), "B1"));
+        actualInventory.put("B1", new Candy("Moonpie", BigDecimal.valueOf(1.80), "B1"));
         actualInventory.put("B2", new Candy("Cowtales", BigDecimal.valueOf(1.50), "B2"));
         actualInventory.put("B3", new Candy("Wonka Bar", BigDecimal.valueOf(1.50), "B3"));
         actualInventory.put("B4", new Candy("Crunchie", BigDecimal.valueOf(1.75), "B4"));

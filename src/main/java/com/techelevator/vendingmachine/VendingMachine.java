@@ -16,7 +16,6 @@ public class VendingMachine {
         currentMoney = new BigDecimal(0);
         totalMoney = new BigDecimal(0);
         this.inventory = inventory;
-
     }
 
     public BigDecimal addMoney(BigDecimal moneyToBeAdded) {

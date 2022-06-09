@@ -17,7 +17,7 @@ public class FileAccessor {
             while(input.hasNext()){
                 String inputItem = input.nextLine();
 
-                String[] itemInfo = inputItem.split("//|");
+                String[] itemInfo = inputItem.split("\\|");
 
                 if(itemInfo[3].equals("Chip")){
                     output.put( itemInfo[0] ,new Chips(itemInfo[1], BigDecimal.valueOf(Double.parseDouble(itemInfo[2])), itemInfo[0]));
