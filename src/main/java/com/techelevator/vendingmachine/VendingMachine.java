@@ -12,10 +12,10 @@ public class VendingMachine {
     private BigDecimal totalMoney;
     private Map<String, Item> inventory;
 
-    public VendingMachine() {
+    public VendingMachine(Map<String, Item> inventory) {
         currentMoney = new BigDecimal(0);
         totalMoney = new BigDecimal(0);
-        inventory= new TreeMap<>();
+        this.inventory = inventory;
 
     }
 
