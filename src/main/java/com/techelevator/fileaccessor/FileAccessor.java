@@ -64,13 +64,32 @@ public class FileAccessor {
         }
     }
 
-    public static void generateSalesReport(VendingMachine vendingMachine) {
+    public static void generateSalesReport(VendingMachine vendingMachine, String fileName) {
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        String formattedDate = currentDateTime.format(DateTimeFormatter.ofPattern("dd-MM-yyyy_HH-mm"));
 
-        for(String key : vendingMachine.getInventory().keySet()){
-            System.out.println(vendingMachine.getInventory().get(key).amountSold());
 
+
+        File salesReportFile = new File(formattedDate + " " + fileName);
+
+        try{
+            salesReportFile.createNewFile();
+        } catch (IOException e){
+            System.err.println("IO Exception: " + e.getMessage());
         }
 
+        try(
+                PrintWriter output = new PrintWriter(salesReportFile)
+                ){
+            for(String key : vendingMachine.getInventory().keySet()){
+                output.println(vendingMachine.getInventory().get(key).amountSold());
+
+            }
+
+            output.println("**TOTAL SALES** " + vendingMachine.getTotalMoney());
+        }catch(FileNotFoundException e){
+            System.err.println("File not found: " + e.getMessage());
+        }
     }
 
 

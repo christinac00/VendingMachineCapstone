@@ -67,4 +67,9 @@ public class FileAccessorTest extends TestCase {
             file.delete();
         }
     }
+
+    @Test
+    public void testGenerateSalesReport(){
+
+    }
 }

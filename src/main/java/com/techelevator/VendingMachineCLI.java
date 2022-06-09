@@ -49,7 +49,7 @@ public class VendingMachineCLI {
 				System.exit(1);
 			}
 			else if(choice.equals(MAIN_MENU_OPTION_SALES_REPORT)){
-				FileAccessor.generateSalesReport(vendingMachine);
+				FileAccessor.generateSalesReport(vendingMachine, "SalesReport.txt");
 			}
 		}
 
