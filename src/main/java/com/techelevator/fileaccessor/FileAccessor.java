@@ -1,6 +1,8 @@
 package com.techelevator.fileaccessor;
 
+import com.techelevator.VendimgMachinePuchasing;
 import com.techelevator.item.*;
+import com.techelevator.vendingmachine.VendingMachine;
 
 import java.io.*;
 import java.math.BigDecimal;
@@ -60,6 +62,15 @@ public class FileAccessor {
         }catch(FileNotFoundException e){
             System.out.println("ERROR, File not found!");
         }
+    }
+
+    public static void generateSalesReport(VendingMachine vendingMachine) {
+
+        for(String key : vendingMachine.getInventory().keySet()){
+            System.out.println(vendingMachine.getInventory().get(key).amountSold());
+
+        }
+
     }
 
 

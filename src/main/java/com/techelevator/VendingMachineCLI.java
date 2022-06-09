@@ -49,7 +49,7 @@ public class VendingMachineCLI {
 				System.exit(1);
 			}
 			else if(choice.equals(MAIN_MENU_OPTION_SALES_REPORT)){
-				System.out.println("the sales report");
+				FileAccessor.generateSalesReport(vendingMachine);
 			}
 		}
 

@@ -79,7 +79,7 @@ public abstract class Item {
     }
 
     public String amountSold(){
-        return name + "\\|" + (TOTAL_ITEMS-itemsLeft);
+        return name + "|" + (TOTAL_ITEMS-itemsLeft);
     }
 
 
