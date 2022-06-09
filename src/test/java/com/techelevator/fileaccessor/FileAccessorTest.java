@@ -63,6 +63,8 @@ public class FileAccessorTest extends TestCase {
             assertEquals(line, formattedDate + "This is a test");
         } catch (FileNotFoundException e){
             Assert.fail();
+        } finally{
+            file.delete();
         }
     }
 }
