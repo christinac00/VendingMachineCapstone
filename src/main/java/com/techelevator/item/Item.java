@@ -1,6 +1,7 @@
 package com.techelevator.item;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 public abstract class Item {
 
@@ -22,6 +23,19 @@ public abstract class Item {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Item item = (Item) o;
+        return TOTAL_ITEMS == item.TOTAL_ITEMS && itemsLeft == item.itemsLeft && Objects.equals(name, item.name) && Objects.equals(price, item.price) && Objects.equals(slotLocation, item.slotLocation) && Objects.equals(soundMessage, item.soundMessage);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(TOTAL_ITEMS, name, price, slotLocation, soundMessage, itemsLeft);
     }
 
     public void setName(String name) {
