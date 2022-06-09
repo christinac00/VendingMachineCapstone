@@ -12,20 +12,22 @@ public class VendingMachineCLI {
 
 	private static final String MAIN_MENU_OPTION_DISPLAY_ITEMS = "Display Vending Machine Items";
 	private static final String MAIN_MENU_OPTION_PURCHASE = "Purchase";
-	private static final String EXIT_PROGRAM = "Exit";
-	private static final String[] MAIN_MENU_OPTIONS = { MAIN_MENU_OPTION_DISPLAY_ITEMS, MAIN_MENU_OPTION_PURCHASE, EXIT_PROGRAM };
+	private static final String[] MAIN_MENU_OPTIONS = { MAIN_MENU_OPTION_DISPLAY_ITEMS, MAIN_MENU_OPTION_PURCHASE };
 
 	private Menu menu;
 	private VendingMachine vendingMachine;
+	private VendimgMachinePuchasing vendimgMachinePuchasing;
 
 	public VendingMachineCLI(Menu menu) {
 		this.menu = menu;
 		vendingMachine = new VendingMachine(FileAccessor.getInventory(new File("vendingmachine.csv")));
+		vendimgMachinePuchasing = new VendimgMachinePuchasing(menu, vendingMachine);
+
 	}
 
 	public void run() {
 
-		//Scanner userInput = new Scanner(System.in);
+		Scanner userInput = new Scanner(System.in);
 
 		while (true) {
 			String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
@@ -34,16 +36,22 @@ public class VendingMachineCLI {
 
 				for( String key: vendingMachine.getInventory().keySet()){
 
-					System.out.println(key + ": " + vendingMachine.getInventory().get(key));
+					System.out.println(key + ":" + vendingMachine.getInventory().get(key));
+
 				}
+
+
+
+				// display vending machine items
 			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
 				// do purchase
-
-
-			} else if (choice.equals(EXIT_PROGRAM)){
-				System.exit(1);
 			}
 		}
+
+
+
+
+
 
 
 	}
