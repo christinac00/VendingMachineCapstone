@@ -4,6 +4,8 @@ import com.techelevator.item.*;
 
 import java.io.*;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class FileAccessor {
@@ -35,7 +37,9 @@ public class FileAccessor {
     }
 
 
-    public static boolean appendLog(File file){
+    public static void appendLog(File file, String message){
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        String formattedDate = currentDateTime.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
 
         if(!file.exists()) {
             try {
@@ -47,12 +51,10 @@ public class FileAccessor {
         }
 
         try(PrintWriter output = new PrintWriter(new FileOutputStream(file, true))){
-            output.println();
+            output.println(formattedDate + message);
         }catch(FileNotFoundException e){
-
+            System.out.println("ERROR, File not found!");
         }
-
-        return false;
     }
 
 

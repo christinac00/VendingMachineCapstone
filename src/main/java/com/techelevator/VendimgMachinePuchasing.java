@@ -1,9 +1,11 @@
 package com.techelevator;
 
+import com.techelevator.fileaccessor.FileAccessor;
 import com.techelevator.item.Item;
 import com.techelevator.vendingmachine.VendingMachine;
 import com.techelevator.view.Menu;
 
+import java.io.File;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -27,6 +29,7 @@ public class VendimgMachinePuchasing {
 
     public void run() {
 
+        File logFile = new File("Log.txt");
         Scanner userInput = new Scanner(System.in);
         List<Item> shoppingCart = new ArrayList<>();
 
@@ -38,17 +41,31 @@ public class VendimgMachinePuchasing {
             if (choice.equals(SUB_MENU_FEED_MONEY)) {
                 System.out.println("Please enter amount of money you wish to add.");
                 try{
-                    vendingMachine.addMoney(BigDecimal.valueOf(Double.parseDouble(userInput.nextLine())));
+                    BigDecimal addedMoney = BigDecimal.valueOf(Double.parseDouble(userInput.nextLine()));
+                    vendingMachine.addMoney(addedMoney);
+                    String message = " FEED MONEY: $" + addedMoney + " $" + vendingMachine.getCurrentMoney().toString();
+                    FileAccessor.appendLog(logFile, message);
                 } catch(NumberFormatException e){
                     System.out.println("Invalid format for adding money please try again!");
                 }
             } else if (choice.equals(SUB_MENU_SELECT_PRODUCT)) {
                 System.out.println("Please enter Product Slot Locaiton.");
                 String slotLocation = userInput.nextLine();
-                System.out.println(vendingMachine.giveItem(slotLocation).getSoundMessage());
+                try {
+                    System.out.println(vendingMachine.giveItem(slotLocation).getSoundMessage());
+                } catch (NullPointerException e){
+
+                }
+                if(vendingMachine.getInventory().get(slotLocation) != null){
+                    String message = " " + vendingMachine.getInventory().get(slotLocation).getName() + " " + slotLocation + " $" + vendingMachine.getInventory().get(slotLocation).getPrice() + " $" + vendingMachine.getCurrentMoney();
+                    FileAccessor.appendLog(logFile, message);
+                }
             } else if (choice.equals(EXIT_SUB_MENU)){
+                String message = " GIVE CHANGE: $" + vendingMachine.getCurrentMoney() + " $0.00";
+                FileAccessor.appendLog(logFile, message);
                 String[] change = returnChange(vendingMachine.getCurrentMoney());
                 System.out.println("Quarters returned: " + change[0] + "\nDimes returned: " + change[1] + "\nNickels returned: " + change[2]);
+                userInput.close();
                 break;
             }
         }
