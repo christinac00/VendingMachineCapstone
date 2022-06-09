@@ -12,7 +12,8 @@ public class VendingMachineCLI {
 	private static final String MAIN_MENU_OPTION_DISPLAY_ITEMS = "Display Vending Machine Items";
 	private static final String MAIN_MENU_OPTION_PURCHASE = "Purchase";
 	private static final String MAIN_MENU_OPTION_EXIT = "Exit";
-	private static final String[] MAIN_MENU_OPTIONS = { MAIN_MENU_OPTION_DISPLAY_ITEMS, MAIN_MENU_OPTION_PURCHASE, MAIN_MENU_OPTION_EXIT };
+	private static final String MAIN_MENU_OPTION_SALES_REPORT = "Sales Report";
+	private static final String[] MAIN_MENU_OPTIONS = { MAIN_MENU_OPTION_DISPLAY_ITEMS, MAIN_MENU_OPTION_PURCHASE, MAIN_MENU_OPTION_EXIT, MAIN_MENU_OPTION_SALES_REPORT};
 
 	private Menu menu;
 	private VendingMachine vendingMachine;
@@ -46,6 +47,9 @@ public class VendingMachineCLI {
 				vendimgMachinePuchasing.run();
 			} else if(choice.equals(MAIN_MENU_OPTION_EXIT)){
 				System.exit(1);
+			}
+			else if(choice.equals(MAIN_MENU_OPTION_SALES_REPORT)){
+				System.out.println("the sales report");
 			}
 		}
 

@@ -78,6 +78,10 @@ public abstract class Item {
         this.itemsLeft = itemsLeft;
     }
 
+    public String amountSold(){
+        return name + "\\|" + (TOTAL_ITEMS-itemsLeft);
+    }
+
 
     @Override
     public String toString() {
