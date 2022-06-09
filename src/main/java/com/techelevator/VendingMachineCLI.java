@@ -12,7 +12,8 @@ public class VendingMachineCLI {
 
 	private static final String MAIN_MENU_OPTION_DISPLAY_ITEMS = "Display Vending Machine Items";
 	private static final String MAIN_MENU_OPTION_PURCHASE = "Purchase";
-	private static final String[] MAIN_MENU_OPTIONS = { MAIN_MENU_OPTION_DISPLAY_ITEMS, MAIN_MENU_OPTION_PURCHASE };
+	private static final String MAIN_MENU_OPTION_EXIT = "Exit";
+	private static final String[] MAIN_MENU_OPTIONS = { MAIN_MENU_OPTION_DISPLAY_ITEMS, MAIN_MENU_OPTION_PURCHASE, MAIN_MENU_OPTION_EXIT };
 
 	private Menu menu;
 	private VendingMachine vendingMachine;
@@ -22,7 +23,6 @@ public class VendingMachineCLI {
 		this.menu = menu;
 		vendingMachine = new VendingMachine(FileAccessor.getInventory(new File("vendingmachine.csv")));
 		vendimgMachinePuchasing = new VendimgMachinePuchasing(menu, vendingMachine);
-
 	}
 
 	public void run() {
@@ -44,7 +44,9 @@ public class VendingMachineCLI {
 
 				// display vending machine items
 			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
-				// do purchase
+				vendimgMachinePuchasing.run();
+			} else if(choice.equals(MAIN_MENU_OPTION_EXIT)){
+				System.exit(1);
 			}
 		}
 

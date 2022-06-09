@@ -21,14 +21,16 @@ public class VendimgMachinePuchasing {
     public void run() {
 
         while (true) {
+            System.out.println("Current Money Added: $" + vendingMachine.getCurrentMoney().toString());
+
             String choice = (String) menu.getChoiceFromOptions(SUB_MENU_OPTIONS);
 
             if (choice.equals(SUB_MENU_FEED_MONEY)) {
-
+                    //add Money
             } else if (choice.equals(SUB_MENU_SELECT_PRODUCT)) {
-                // do purchase
+                //select Products
             } else if (choice.equals(EXIT_SUB_MENU)){
-                break;
+                //finalize pruchases and return
             }
         }
     }
