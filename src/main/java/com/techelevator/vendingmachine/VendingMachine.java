@@ -58,11 +58,9 @@ public class VendingMachine {
         return currentMoney;
     }
 
-
     public BigDecimal getTotalMoney() {
         return totalMoney;
     }
-
 
     public Map<String, Item> getInventory() {
         return inventory;
