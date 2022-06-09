@@ -35,19 +35,15 @@ public class VendingMachineCLI {
 				for( String key: vendingMachine.getInventory().keySet()){
 
 					System.out.println(key + ": " + vendingMachine.getInventory().get(key));
-
 				}
 			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
 				// do purchase
+
+
 			} else if (choice.equals(EXIT_PROGRAM)){
 				System.exit(1);
 			}
 		}
-
-
-
-
-
 
 
 	}
