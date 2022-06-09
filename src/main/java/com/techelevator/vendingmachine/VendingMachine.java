@@ -38,10 +38,9 @@ public class VendingMachine {
                 totalMoney= totalMoney.add(output.getPrice());
                 inventory.get(slotLocation).setItemsLeft(output.getItemsLeft()-1);
 
+            } else {
+                System.out.println("Not enough money!");
             }
-
-            System.out.println("Not enough money!");
-
 
         }else {
             System.out.println("Item is SOLD OUT.");
