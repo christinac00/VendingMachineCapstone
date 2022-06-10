@@ -7,4 +7,9 @@ public class Chips extends Item{
         super(name, price, slotLocation);
         this.setSoundMessage("Crunch Crunch, Yum!");
     }
+
+    @Override
+    public String getSoundFile() {
+        return "src/main/resources/CrunchCrunchYum.wav";
+    }
 }

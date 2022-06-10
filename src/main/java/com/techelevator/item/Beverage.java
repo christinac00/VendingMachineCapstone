@@ -8,4 +8,9 @@ public class Beverage extends Item{
         super(name, price, slotLocation);
         this.setSoundMessage("Glug Glug, Yum!");
     }
+
+    @Override
+    public String getSoundFile() {
+        return "src/main/resources/GlugGlugYum.wav";
+    }
 }

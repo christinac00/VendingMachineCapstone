@@ -7,4 +7,9 @@ public class Candy extends Item{
         super(name, price, slotLocation);
         this.setSoundMessage("Munch Munch, Yum!");
     }
+
+    @Override
+    public String getSoundFile() {
+        return "src/main/resources/MunchMunchYum.wav";
+    }
 }

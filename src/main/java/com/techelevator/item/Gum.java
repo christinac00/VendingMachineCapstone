@@ -6,4 +6,9 @@ public class Gum extends Item{
         super(name, price, slotLocation);
         this.setSoundMessage("Chew Chew, Yum!");
     }
+
+    @Override
+    public String getSoundFile() {
+        return "src/main/resources/ChewChewYum.wav";
+    }
 }

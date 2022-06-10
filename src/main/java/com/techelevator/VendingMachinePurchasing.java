@@ -2,9 +2,13 @@ package com.techelevator;
 
 import com.techelevator.fileaccessor.FileAccessor;
 import com.techelevator.vendingmachine.VendingMachine;
+import com.techelevator.view.AudioPlayer;
 import com.techelevator.view.Menu;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.File;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Scanner;
 
@@ -67,6 +71,17 @@ public class VendingMachinePurchasing {
 
                 }
                 if(vendingMachine.getInventory().get(slotLocation) != null && !moneyAtStart.equals(vendingMachine.getCurrentMoney())){
+                    try(
+                            AudioPlayer audioPlayer = new AudioPlayer(new File(vendingMachine.getInventory().get(slotLocation).getSoundFile()));
+                            ) {
+                        audioPlayer.play();
+                    } catch (UnsupportedAudioFileException e) {
+                        System.out.println(ANSI_RED + "Unsupported Audio File" + ANSI_RESET);
+                    } catch (LineUnavailableException e) {
+                        System.out.println(ANSI_RED + "Line Unavailable" + ANSI_RESET);
+                    } catch (IOException e) {
+                        System.out.println(ANSI_RED + "Input Output Error" + ANSI_RESET);
+                    }
                     String message = " " + vendingMachine.getInventory().get(slotLocation).getName() + " " + slotLocation + " $" + vendingMachine.getInventory().get(slotLocation).getPrice() + " $" + vendingMachine.getCurrentMoney();
                     FileAccessor.appendLog(logFile, message);
                 }

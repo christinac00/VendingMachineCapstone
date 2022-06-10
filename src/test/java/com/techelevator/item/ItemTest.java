@@ -16,6 +16,7 @@ public class ItemTest extends TestCase {
         Beverage beverage = new Beverage("Coke", new BigDecimal(1.00), "A1");
 
         assertTrue(beverage.getSoundMessage().equals("Glug Glug, Yum!"));
+        assertTrue(beverage.getSoundFile().equals("src/main/resources/GlugGlugYum.wav"));
     }
 
     @Test
@@ -23,6 +24,7 @@ public class ItemTest extends TestCase {
         Chips chips = new Chips("Lays", new BigDecimal(1.0), "A1");
 
         assertTrue(chips.getSoundMessage().equals("Crunch Crunch, Yum!"));
+        assertTrue(chips.getSoundFile().equals("src/main/resources/CrunchCrunchYum.wav"));
     }
 
     @Test
@@ -30,6 +32,7 @@ public class ItemTest extends TestCase {
         Gum gum = new Gum("Big League Chew", new BigDecimal(1.00), "A1");
 
         assertTrue(gum.getSoundMessage().equals("Chew Chew, Yum!"));
+        assertTrue(gum.getSoundFile().equals("src/main/resources/ChewChewYum.wav"));
     }
 
     @Test
@@ -37,6 +40,7 @@ public class ItemTest extends TestCase {
         Candy candy = new Candy("Twix", new BigDecimal(1.00), "A1");
 
         assertTrue(candy.getSoundMessage().equals("Munch Munch, Yum!"));
+        assertTrue(candy.getSoundFile().equals("src/main/resources/MunchMunchYum.wav"));
     }
 
 }

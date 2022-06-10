@@ -1,8 +1,10 @@
 package com.techelevator.vendingmachine;
 
 import com.techelevator.item.Item;
+import com.techelevator.view.AudioPlayer;
 import com.techelevator.view.ColorsANSI;
 
+import java.io.File;
 import java.math.BigDecimal;
 import java.util.Map;
 import java.util.TreeMap;
@@ -46,10 +48,12 @@ public class VendingMachine {
 
             } else {
                 System.out.println(ANSI_RED + "Not enough money!"+ ANSI_RESET);
+                output = null;
             }
 
         }else {
             System.out.println(ANSI_RED +"Item is SOLD OUT."+ ANSI_RESET);
+            output = null;
         }
         return output;
     }

@@ -82,6 +82,8 @@ public abstract class Item {
         return name + "|" + (TOTAL_ITEMS-itemsLeft);
     }
 
+    public abstract String getSoundFile();
+
 
     @Override
     public String toString() {
