@@ -9,6 +9,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
+import static com.techelevator.view.ColorsANSI.ANSI_RED;
+import static com.techelevator.view.ColorsANSI.ANSI_RESET;
+
 public class FileAccessor {
 
     private static final int ITEM_SLOT_LOCATION = 0;
@@ -37,7 +40,7 @@ public class FileAccessor {
                 }
             }
         } catch (FileNotFoundException e){
-            System.err.println("File not found: " + e.getMessage());
+            System.err.println(ANSI_RED + "File not found: " + e.getMessage() + ANSI_RESET);
         }
         return output;
     }
@@ -51,14 +54,14 @@ public class FileAccessor {
                 file.createNewFile();
             }
             catch(IOException e){
-                System.out.println("ERROR, invalid!");
+                System.out.println(ANSI_RED+ "ERROR, invalid!" + ANSI_RESET);
             }
         }
 
         try(PrintWriter output = new PrintWriter(new FileOutputStream(file, true))){
             output.println(formattedDate + message);
         }catch(FileNotFoundException e){
-            System.out.println("ERROR, File not found!");
+            System.out.println(ANSI_RED + "ERROR, File not found!" + ANSI_RESET);
         }
     }
 
@@ -73,7 +76,7 @@ public class FileAccessor {
         try{
             salesReportFile.createNewFile();
         } catch (IOException e){
-            System.err.println("IO Exception: " + e.getMessage());
+            System.err.println(ANSI_RED + "IO Exception: " + e.getMessage() + ANSI_RESET);
         }
 
         try(
@@ -86,7 +89,7 @@ public class FileAccessor {
 
             output.println("**TOTAL SALES** " + vendingMachine.getTotalMoney());
         }catch(FileNotFoundException e){
-            System.err.println("File not found: " + e.getMessage());
+            System.err.println(ANSI_RED + "File not found: " + e.getMessage() + ANSI_RESET);
         }
     }
 

@@ -8,6 +8,9 @@ import java.io.File;
 import java.math.BigDecimal;
 import java.util.Scanner;
 
+import static com.techelevator.view.ColorsANSI.ANSI_RED;
+import static com.techelevator.view.ColorsANSI.ANSI_RESET;
+
 public class VendingMachinePurchasing {
 
     private static final double QUARTER_VALUE = 0.25;
@@ -51,7 +54,7 @@ public class VendingMachinePurchasing {
                     String message = " FEED MONEY: $" + addedMoney + " $" + vendingMachine.getCurrentMoney().toString();
                     FileAccessor.appendLog(logFile, message);
                 } catch(NumberFormatException e){
-                    System.out.println("Invalid format for adding money please try again!");
+                    System.out.println(ANSI_RED + "Invalid format for adding money please try again!" + ANSI_RESET);
                 }
             }
             else if (choice.equals(SUB_MENU_SELECT_PRODUCT)) {

@@ -1,16 +1,22 @@
 package com.techelevator.vendingmachine;
 
 import com.techelevator.item.Item;
+import com.techelevator.view.ColorsANSI;
 
 import java.math.BigDecimal;
 import java.util.Map;
 import java.util.TreeMap;
+
+import static com.techelevator.view.ColorsANSI.ANSI_RED;
+import static com.techelevator.view.ColorsANSI.ANSI_RESET;
+import static java.awt.PageAttributes.MediaType.D;
 
 public class VendingMachine {
 
     private BigDecimal currentMoney;
     private BigDecimal totalMoney;
     private Map<String, Item> inventory;
+    public ColorsANSI colorsANSI;
 
     public VendingMachine(Map<String, Item> inventory) {
         currentMoney = new BigDecimal(0);
@@ -27,7 +33,7 @@ public class VendingMachine {
         Item output = inventory.get(slotLocation);
 
         if(output==null ){
-            System.out.println("Item not found.");
+            System.out.println(ANSI_RED + "Item not found." + ANSI_RESET);
         }
 
         else if( output.getItemsLeft() != 0 ){
@@ -39,11 +45,11 @@ public class VendingMachine {
                 inventory.get(slotLocation).setItemsLeft(output.getItemsLeft()-1);
 
             } else {
-                System.out.println("Not enough money!");
+                System.out.println(ANSI_RED + "Not enough money!"+ ANSI_RESET);
             }
 
         }else {
-            System.out.println("Item is SOLD OUT.");
+            System.out.println(ANSI_RED +"Item is SOLD OUT."+ ANSI_RESET);
         }
         return output;
     }
