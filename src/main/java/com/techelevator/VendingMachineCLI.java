@@ -37,9 +37,7 @@ public class VendingMachineCLI {
 				for( String key: vendingMachine.getInventory().keySet()){
 
 					System.out.println(key + ":" + vendingMachine.getInventory().get(key));
-
 				}
-
 
 
 				// display vending machine items

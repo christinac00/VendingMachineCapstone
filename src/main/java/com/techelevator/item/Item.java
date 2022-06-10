@@ -3,6 +3,8 @@ package com.techelevator.item;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+import static com.techelevator.view.ColorsANSI.*;
+
 public abstract class Item {
 
     private final int TOTAL_ITEMS = 5;
@@ -15,9 +17,9 @@ public abstract class Item {
 
 
     public Item(String name, BigDecimal price, String slotLocation) {
-        this.name = name;
+        this.name = ANSI_YELLOW + name + ANSI_RESET;
         this.price = price;
-        this.slotLocation = slotLocation;
+        this.slotLocation = ANSI_PURPLE + slotLocation+ ANSI_RESET;
         itemsLeft = TOTAL_ITEMS;
     }
 
