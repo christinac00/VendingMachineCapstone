@@ -38,9 +38,10 @@ public class VendimgMachinePuchasing {
 
         File logFile = new File("Log.txt");
         Scanner userInput = new Scanner(System.in);
-        List<Item> shoppingCart = new ArrayList<>();
 
-        while (true) {
+        boolean isRunning = true;
+
+        while (isRunning) {
             System.out.println("Current Money Added: $" + vendingMachine.getCurrentMoney().toString());
 
             String choice = (String) menu.getChoiceFromOptions(SUB_MENU_OPTIONS);
@@ -55,7 +56,9 @@ public class VendimgMachinePuchasing {
                 } catch(NumberFormatException e){
                     System.out.println("Invalid format for adding money please try again!");
                 }
-            } else if (choice.equals(SUB_MENU_SELECT_PRODUCT)) {
+            }
+            else if (choice.equals(SUB_MENU_SELECT_PRODUCT)) {
+                BigDecimal moneyAtStart = vendingMachine.getCurrentMoney();
                 System.out.println("Please enter Product Slot Locaiton.");
                 String slotLocation = userInput.nextLine();
                 try {
@@ -63,17 +66,18 @@ public class VendimgMachinePuchasing {
                 } catch (NullPointerException e){
 
                 }
-                if(vendingMachine.getInventory().get(slotLocation) != null){
+                if(vendingMachine.getInventory().get(slotLocation) != null && !moneyAtStart.equals(vendingMachine.getCurrentMoney())){
                     String message = " " + vendingMachine.getInventory().get(slotLocation).getName() + " " + slotLocation + " $" + vendingMachine.getInventory().get(slotLocation).getPrice() + " $" + vendingMachine.getCurrentMoney();
                     FileAccessor.appendLog(logFile, message);
                 }
-            } else if (choice.equals(EXIT_SUB_MENU)){
+            }
+            else if (choice.equals(EXIT_SUB_MENU)){
                 String message = " GIVE CHANGE: $" + vendingMachine.getCurrentMoney() + " $0.00";
                 FileAccessor.appendLog(logFile, message);
                 String[] change = returnChange(vendingMachine.getCurrentMoney());
                 System.out.println("Quarters returned: " + change[QUARTER_LOCATION] + "\nDimes returned: " + change[DIME_LOCATION] + "\nNickels returned: " + change[NICKLE_LOCATION]);
                 vendingMachine.setCurrentMoney(BigDecimal.valueOf(0.0));
-                break;
+                isRunning = false;
             }
         }
     }
