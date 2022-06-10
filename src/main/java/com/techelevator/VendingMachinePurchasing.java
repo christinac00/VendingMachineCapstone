@@ -1,17 +1,14 @@
 package com.techelevator;
 
 import com.techelevator.fileaccessor.FileAccessor;
-import com.techelevator.item.Item;
 import com.techelevator.vendingmachine.VendingMachine;
 import com.techelevator.view.Menu;
 
 import java.io.File;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
-public class VendimgMachinePuchasing {
+public class VendingMachinePurchasing {
 
     private static final double QUARTER_VALUE = 0.25;
     private static final double DIME_VALUE = 0.10;
@@ -29,7 +26,7 @@ public class VendimgMachinePuchasing {
     private Menu menu;
     private VendingMachine vendingMachine;
 
-    public VendimgMachinePuchasing(Menu menu, VendingMachine vendingMachine) {
+    public VendingMachinePurchasing(Menu menu, VendingMachine vendingMachine) {
         this.menu = menu;
         this.vendingMachine = vendingMachine;
     }
@@ -59,7 +56,7 @@ public class VendimgMachinePuchasing {
             }
             else if (choice.equals(SUB_MENU_SELECT_PRODUCT)) {
                 BigDecimal moneyAtStart = vendingMachine.getCurrentMoney();
-                System.out.println("Please enter Product Slot Locaiton.");
+                System.out.println("Please enter Product Slot Location.");
                 String slotLocation = userInput.nextLine();
                 try {
                     System.out.println(vendingMachine.giveItem(slotLocation).getSoundMessage());

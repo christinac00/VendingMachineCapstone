@@ -17,12 +17,12 @@ public class VendingMachineCLI {
 
 	private Menu menu;
 	private VendingMachine vendingMachine;
-	private VendimgMachinePuchasing vendimgMachinePuchasing;
+	private VendingMachinePurchasing vendingMachinePurchasing;
 
 	public VendingMachineCLI(Menu menu) {
 		this.menu = menu;
 		vendingMachine = new VendingMachine(FileAccessor.getInventory(new File("vendingmachine.csv")));
-		vendimgMachinePuchasing = new VendimgMachinePuchasing(menu, vendingMachine);
+		vendingMachinePurchasing = new VendingMachinePurchasing(menu, vendingMachine);
 	}
 
 	public void run() {
@@ -44,7 +44,7 @@ public class VendingMachineCLI {
 
 				// display vending machine items
 			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
-				vendimgMachinePuchasing.run();
+				vendingMachinePurchasing.run();
 			} else if(choice.equals(MAIN_MENU_OPTION_EXIT)){
 				System.exit(1);
 			}
