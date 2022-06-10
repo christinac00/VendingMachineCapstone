@@ -7,6 +7,9 @@ import com.techelevator.view.Menu;
 import java.io.File;
 import java.util.Scanner;
 
+import static com.techelevator.view.ColorsANSI.ANSI_PURPLE;
+import static com.techelevator.view.ColorsANSI.ANSI_RESET;
+
 public class VendingMachineCLI {
 
 	private static final String MAIN_MENU_OPTION_DISPLAY_ITEMS = "Display Vending Machine Items";
@@ -36,7 +39,7 @@ public class VendingMachineCLI {
 
 				for( String key: vendingMachine.getInventory().keySet()){
 
-					System.out.println(key + ":" + vendingMachine.getInventory().get(key));
+					System.out.println(ANSI_PURPLE + key + ANSI_RESET + ":" + vendingMachine.getInventory().get(key));
 				}
 
 

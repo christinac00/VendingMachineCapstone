@@ -12,8 +12,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Scanner;
 
-import static com.techelevator.view.ColorsANSI.ANSI_RED;
-import static com.techelevator.view.ColorsANSI.ANSI_RESET;
+import static com.techelevator.view.ColorsANSI.*;
 
 public class VendingMachinePurchasing {
 
@@ -46,7 +45,7 @@ public class VendingMachinePurchasing {
         boolean isRunning = true;
 
         while (isRunning) {
-            System.out.println("Current Money Added: $" + vendingMachine.getCurrentMoney().toString());
+            System.out.println("Current Money Added: $" + ANSI_GREEN + vendingMachine.getCurrentMoney().toString() + ANSI_RESET);
 
             String choice = (String) menu.getChoiceFromOptions(SUB_MENU_OPTIONS);
 
@@ -90,7 +89,7 @@ public class VendingMachinePurchasing {
                 String message = " GIVE CHANGE: $" + vendingMachine.getCurrentMoney() + " $0.00";
                 FileAccessor.appendLog(logFile, message);
                 String[] change = returnChange(vendingMachine.getCurrentMoney());
-                System.out.println("Quarters returned: " + change[QUARTER_LOCATION] + "\nDimes returned: " + change[DIME_LOCATION] + "\nNickels returned: " + change[NICKLE_LOCATION]);
+                System.out.println("Quarters returned: " + ANSI_GREEN + change[QUARTER_LOCATION] + ANSI_RESET + "\nDimes returned: " + ANSI_GREEN + change[DIME_LOCATION] + ANSI_RESET + "\nNickels returned: " + ANSI_GREEN + change[NICKLE_LOCATION] + ANSI_RESET);
                 vendingMachine.setCurrentMoney(BigDecimal.valueOf(0.0));
                 isRunning = false;
             }

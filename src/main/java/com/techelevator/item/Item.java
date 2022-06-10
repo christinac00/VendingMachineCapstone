@@ -18,8 +18,8 @@ public abstract class Item {
 
     public Item(String name, BigDecimal price, String slotLocation) {
         this.name = ANSI_YELLOW + name + ANSI_RESET;
-        this.price = price;
-        this.slotLocation = ANSI_PURPLE + slotLocation+ ANSI_RESET;
+        this.price =  price;
+        this.slotLocation = ANSI_BLUE + slotLocation+ ANSI_RESET;
         itemsLeft = TOTAL_ITEMS;
     }
 
@@ -89,6 +89,6 @@ public abstract class Item {
 
     @Override
     public String toString() {
-        return "name: " + name + " Price: " + price.toString() + " Amount Remaining: " + itemsLeft;
+        return "name: " + name + " Price: " + ANSI_GREEN +price.toString() + ANSI_RESET + " Amount Remaining: " + itemsLeft;
     }
 }
